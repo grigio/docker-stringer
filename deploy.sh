@@ -45,7 +45,7 @@ app_setup () {
   cd $APPDIR && sudo -u stringer foreman run bundle exec rake db:migrate
 
   # cronjob
-  sudo -u stringer  crontab -l | { cat; echo "*/10 * * * *  cd $APPDIR && foreman run bundle exec rake fetch_feeds"; } | crontab -
+  echo "*/10 * * * *  cd $APPDIR && foreman run bundle exec rake fetch_feeds" | sudo -u stringer crontab -
 }
 
 app_run () {
