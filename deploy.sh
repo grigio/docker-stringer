@@ -11,7 +11,7 @@ show() {
 }
 
 system_setup () {
-	show "System setup, packages, gems, sys users.."
+  show "System setup, packages, gems, sys users.."
   sudo apt-get update
   sudo apt-get install -y git psmisc libxml2-dev libxslt-dev libcurl4-openssl-dev libpq-dev libsqlite3-dev build-essential nodejs postgresql screen make  libcurl4-openssl-dev build-essential ruby1.9.1 ruby1.9.1-dev
   sudo gem install bundler rake foreman --no-rdoc --no-ri
@@ -19,7 +19,7 @@ system_setup () {
 }
 
 system_run () {
-	show "System daemons start"
+  show "System daemons start"
   sudo /etc/init.d/postgresql start
   sudo cron
 }
@@ -27,7 +27,7 @@ system_run () {
 
 app_setup () {
   system_run
-	show "App db, cron, env"
+  show "App db, cron, env"
 
   # prepare db
   sudo -u postgres psql -c "CREATE ROLE stringer NOCREATEDB LOGIN encrypted password 'strpass'"
@@ -48,9 +48,9 @@ app_setup () {
 }
 
 app_run () {
-	system_run
+  system_run
   show "App start"
-	cd $APPDIR && sudo -u stringer foreman start
+  cd $APPDIR && sudo -u stringer foreman start
 }
 
 $1
