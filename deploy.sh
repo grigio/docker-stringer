@@ -1,7 +1,6 @@
 #!/bin/bash
 #
 # Deploy.sh
-# 
 #
 
 HOME="/home/stringer"
